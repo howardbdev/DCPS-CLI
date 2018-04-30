@@ -8,13 +8,14 @@ class Scraper
   def self.scrape_all_schools(school_page_url)
     html = open(school_page_url)
     document = Nokogiri::HTML(html)
-    
-    document.css("#find selector") each do |school|
-      temp_hash = Hash.new 
-      temp_hash[:name] = 
-      temp_hash[:url] =
-   
     schools_hash = []
+    
+    document.css(".schoolname").each do |school|
+      temp_hash = Hash.new 
+      temp_hash[:name] = school.css.text
+      #temp_hash[:url] = school.("a")[0]["href"]
+      schools_hash << Hash.new
+    end 
     binding.pry
   end 
   
