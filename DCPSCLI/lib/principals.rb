@@ -8,5 +8,8 @@ class Principal
     @email_address = email_address
   end 
   
+  def make_principals_from_scraper(principal_hash)
+  end
+  
   
 end 

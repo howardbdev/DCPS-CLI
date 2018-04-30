@@ -15,3 +15,5 @@ class Scraper
     html = open(school_profile_url)
     document = Nokogiri::HTML(html)
   end 
+  
+end 
