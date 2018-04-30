@@ -5,9 +5,13 @@ require 'pry'
 class Scraper
   
   #method for scraping the names of all the schools from the DCPS page
-  def self.scrape_all_schools
+  def self.scrape_all_schools(school_page_url)
+    html = open(school_page_url)
+    document = Nokogiri::HTML(html)
   end 
   
   #method for scraping details about an individual school
-  def self.scrape_school_details
+  def self.scrape_school_details(school_profile_url)
+    html = open(school_profile_url)
+    document = Nokogiri::HTML(html)
   end 
