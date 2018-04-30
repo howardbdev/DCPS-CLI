@@ -12,12 +12,12 @@ class Scraper
     
     document.css(".schoolname").each do |school|
       temp_hash = Hash.new 
-      temp_hash[:name] = school.css.text
-      #temp_hash[:url] = school.("a")[0]["href"]
-      schools_hash << Hash.new
+      temp_hash[:name] = school.text
+      temp_hash[:url] = school["href"]
+      schools_hash << temp_hash
     end 
     binding.pry
-  end 
+    end 
   
   #method for scraping details about an individual school
   def self.scrape_school_details(school_profile_url)
