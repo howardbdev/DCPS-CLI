@@ -1,8 +1,9 @@
 class School
-  attr_accessor :principal, :url, :address, :grades
+  attr_accessor :name, :principal, :url, :address, :grades
   @@all = []
   
-  def initialize(principal, url, address, grades)
+  def initialize(name, principal, url, address, grades)
+    @name = name
     @principal = principal
     @url = url
     @address = address
