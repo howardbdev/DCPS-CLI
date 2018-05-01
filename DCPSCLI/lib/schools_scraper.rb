@@ -22,7 +22,7 @@ class Scraper
   #method for scraping details about an individual school
   def self.scrape_school_details(school_hash)
     school_profile_url = school_hash[:url]   
-    school_profile_hash = {}   
+    school_profile_hash = {}  
     html = open("http://profiles.dcps.dc.gov#{school_profile_url}")
     document = Nokogiri::HTML(html)
     
@@ -41,6 +41,19 @@ class Scraper
     school_profile_hash[:address] = document.css("p").first.text
     school_profile_hash[:grades] = school_details_document.css("#grade_id").css("p")[0].text
     school_profile_hash
+  end 
+  
+  #method for scraping details about an individual principal
+  def self.scrape_principal_details(school_hash)
+    school_profile_url = school_hash[:url]   
+    principal_profile_hash = {}  
+    html = open("http://profiles.dcps.dc.gov#{school_profile_url}")
+    document = Nokogiri::HTML(html)
+    
+    principal_profile_hash[:principal_name] = document.css(".infacis").text
+    principal_profile_hash[:principal_email] = document.css("#school_info").css("a")[2]["href"].split(":")[1]
+    
+    principal_profile_hash
   end 
   
   #method to capture all schools with their details in one array

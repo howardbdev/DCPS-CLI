@@ -9,6 +9,7 @@ class School
        school_hash.each do |key, value| 
          self.instance_variable_set("@#{key}".to_sym, value)
       end 
+      @grade_range = []
       @@all << self 
     end 
     
