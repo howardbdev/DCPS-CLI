@@ -18,10 +18,8 @@ class School
   
     def self.create_from_scraper(schools_array)  
       schools_array.each do |school|
-        binding.pry
         School.new(school)
       end
-      binding.pry
     end 
    
     def turn_grade_range_into_grades
