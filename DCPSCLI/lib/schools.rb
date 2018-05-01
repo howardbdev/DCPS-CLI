@@ -1,4 +1,5 @@
-require_relative "schools_scraper"
+require_relative "scraper"
+require_relative "principals"
 require "pry"
 
 class School
@@ -22,6 +23,18 @@ class School
         School.new(school)
       end
     end 
+    
+    def self.match_principals
+      @@all.each do |school|
+        Principal.all.each do |principal|
+          if principal.url == school.url 
+            school.principal = principal
+            principal.school = school
+            binding.pry
+          end 
+        end 
+      end 
+    end 
    
     def turn_grade_range_into_grades
     end 
@@ -29,4 +42,6 @@ class School
   
 end 
 
-School.create_from_scraper(Scraper.test_method)
+School.create_from_scraper(Scraper.school_test)
+Principal.create_from_scraper(Scraper.principal_test)
+School.match_principals

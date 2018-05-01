@@ -1,17 +1,22 @@
 class Principal
-  attr_accessor :first_name, :last_name, :school, :email_address, :full_name
+  attr_accessor :first_name, :last_name, :school, :email_address, :full_name, :url
   @@all = []
   
-  def initialize()
-    @first_name = first_name
-    @last_name = last_name
-    @school = school 
-    @email_address = email_address
+   def initialize(principal_hash)
+       principal_hash.each do |key, value| 
+         self.instance_variable_set("@#{key}".to_sym, value)
+      end 
     @@all << self
+   end 
+  
+   def self.create_from_scraper(principals_array)  
+     principals_array.each do |principal|
+        Principal.new(principal)
+     end
+   end 
+  
+  def self.all
+    @@all
   end 
-  
-  def make_principals_from_scraper(principal_hash)
-  end
-  
   
 end 

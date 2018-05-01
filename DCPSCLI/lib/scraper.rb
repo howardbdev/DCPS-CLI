@@ -92,9 +92,6 @@ class Scraper
      test_value = []
      test_value << scrape_principal_details({:name=>"Aiton Elementary School", :url=>"/Aiton+Elementary+School"})
      test_value
-     binding.pry
    end 
   
 end 
-
-Scraper.principal_test
