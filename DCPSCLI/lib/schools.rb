@@ -11,9 +11,23 @@ class School
       end 
       @@all << self 
     end 
+    
+    def self.all 
+      @@all
+    end 
   
+    def self.create_from_scraper(schools_array)  
+      schools_array.each do |school|
+        binding.pry
+        School.new(school)
+      end
+      binding.pry
+    end 
+   
     def turn_grade_range_into_grades
     end 
   
   
 end 
+
+School.create_from_scraper(Scraper.test_method)

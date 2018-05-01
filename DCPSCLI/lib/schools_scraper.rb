@@ -17,7 +17,7 @@ class Scraper
       schools_array << temp_hash
     end 
     schools_array
-    end 
+   end 
   
   #method for scraping details about an individual school
   def self.scrape_school_details(school_hash)
@@ -43,16 +43,21 @@ class Scraper
     school_profile_hash
   end 
   
+  #method to capture all schools with their details in one array
   def self.all_schools_with_details(school_page_url)
     array_of_all_schools = []
     schools_array = scrape_all_schools(school_page_url)
     schools_array.each do |school|
-      array_of_all_schools << scrape_school_details(school)
+    array_of_all_schools << scrape_school_details(school)
     end 
-    binding.pry
-  end   
+    array_of_all_schools
+  end
+  
+  #test method so I don't scrape the whole site every time I'm writing a method for another class
+   def self.test_method
+     test_value = []
+     test_value << scrape_school_details({:name=>"Aiton Elementary School", :url=>"/Aiton+Elementary+School"})
+     test_value
+   end 
   
 end 
-  
-  
-Scraper.all_schools_with_details("http://profiles.dcps.dc.gov/")
