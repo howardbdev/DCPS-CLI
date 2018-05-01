@@ -43,6 +43,4 @@ class Scraper
     binding.pry
   end 
   
-end 
-
-Scraper.scrape_school_details({:name=>"Aiton Elementary School", :url=>"/Aiton+Elementary+School"})
+end
