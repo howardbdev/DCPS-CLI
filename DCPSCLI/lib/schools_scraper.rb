@@ -33,7 +33,7 @@ class Scraper
     school_profile_hash[:name] = school_hash[:name]
     school_profile_hash[:url] = school_profile_url
     school_profile_hash[:principal_name] = document.css(".infacis").text
-    school_profile_hash[:princpal_email]
+    school_profile_hash[:principal_email] = document.css("#school_info").css("a")[2]["href"].split(":")[1]
     school_profile_hash[:address] = document.css("p").first.text
     school_profile_hash[:grades] =
     binding.pry
