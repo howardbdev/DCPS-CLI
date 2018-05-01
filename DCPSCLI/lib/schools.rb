@@ -60,6 +60,20 @@ class School
       @grade_range = Array(lowest_grade..highest_grade)
     end 
   
+    def self.view_schools_alphabetically
+    end 
+    
+    def self.find_school_by_name
+    end 
+    
+    def self.find_school_by_principal
+    end 
+    
+    def self.find_school_by_grade
+    end 
+    
+    def view_school_details
+    end 
   
 end 
 

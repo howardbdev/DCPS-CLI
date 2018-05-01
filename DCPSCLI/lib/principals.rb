@@ -22,7 +22,13 @@ class Principal
   def self.sort_by_first_name
   end 
   
-  def self.find_principal_by_grade
+  def self.find_principal_by_school
   end
+  
+  def self.view_all_principals_with_email_addresses
+  end
+  
+  def view_principal_details
+  end 
   
 end 
