@@ -50,8 +50,11 @@ class Scraper
     html = open("http://profiles.dcps.dc.gov#{school_profile_url}")
     document = Nokogiri::HTML(html)
     
-    principal_profile_hash[:principal_name] = document.css(".infacis").text
+    principal_profile_hash[:principal_full_name] = document.css(".infacis").text
+    principal_profile_hash[:url] = school_profile_url
     principal_profile_hash[:principal_email] = document.css("#school_info").css("a")[2]["href"].split(":")[1]
+    principal_profile_hash[:first_name] = principal_profile_hash[:principal_email].split("@").first.split(".").first
+    principal_profile_hash[:last_name] = principal_profile_hash[:principal_email].split("@").first.split(".").last
     
     principal_profile_hash
   end 
@@ -66,11 +69,32 @@ class Scraper
     array_of_all_schools
   end
   
+  #method to capture all principals with their details in one array
+  def self.all_principals_with_details(school_page_url)
+    array_of_all_principals = []
+    principals_array = scrape_all_schools(school_page_url)
+    principals_array.each do |principal|
+    array_of_all_principals << scrape_principal_details(principal)
+    end 
+    array_of_all_principals
+  end
+  
+  
   #test method so I don't scrape the whole site every time I'm writing a method for another class
-   def self.test_method
+   def self.school_test
      test_value = []
      test_value << scrape_school_details({:name=>"Aiton Elementary School", :url=>"/Aiton+Elementary+School"})
      test_value
    end 
+   
+     #test method so I don't scrape the whole site every time I'm writing a method for another class
+   def self.principal_test
+     test_value = []
+     test_value << scrape_principal_details({:name=>"Aiton Elementary School", :url=>"/Aiton+Elementary+School"})
+     test_value
+     binding.pry
+   end 
   
 end 
+
+Scraper.principal_test

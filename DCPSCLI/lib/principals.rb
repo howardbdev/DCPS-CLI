@@ -1,5 +1,5 @@
 class Principal
-  attr_accessor :first_name, :last_name, :school, :email_address
+  attr_accessor :first_name, :last_name, :school, :email_address, :full_name
   @@all = []
   
   def initialize()
