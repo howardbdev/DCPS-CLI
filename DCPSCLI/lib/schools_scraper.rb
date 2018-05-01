@@ -30,7 +30,7 @@ class Scraper
      n.replace(", ")
      end
      
-     school_details_url = school_profile_url.split("/")[0]
+     school_details_url = school_profile_url.split("/")[1]
      school_details_html = open("http://profiles.dcps.dc.gov/DetailOverview_.aspx?school=#{school_details_url}")
      school_details_document = Nokogiri::HTML(school_details_html)
     
@@ -39,7 +39,7 @@ class Scraper
     school_profile_hash[:principal_name] = document.css(".infacis").text
     school_profile_hash[:principal_email] = document.css("#school_info").css("a")[2]["href"].split(":")[1]
     school_profile_hash[:address] = document.css("p").first.text
-    school_profile_hash[:grades] = school_details_document.css("#grade_id").css("p")[0]
+    school_profile_hash[:grades] = school_details_document.css("#grade_id").css("p")[0].text
     binding.pry
   end 
   
