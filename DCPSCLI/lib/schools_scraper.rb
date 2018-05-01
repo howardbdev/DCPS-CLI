@@ -25,11 +25,16 @@ class Scraper
     school_profile_hash = {}   
     html = open("http://profiles.dcps.dc.gov#{school_profile_url}")
     document = Nokogiri::HTML(html)
+    
+    document.search("br").each do |n|
+     n.replace(", ")
+     end
+    
     school_profile_hash[:name] = school_hash[:name]
     school_profile_hash[:url] = school_profile_url
-    school_profile_hash[:principal_name] = 
+    school_profile_hash[:principal_name] = document.css(".infacis").text
     school_profile_hash[:princpal_email]
-    school_profile_hash[:address] = 
+    school_profile_hash[:address] = document.css("p").first.text
     school_profile_hash[:grades] =
     binding.pry
   end 
