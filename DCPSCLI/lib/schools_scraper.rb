@@ -16,16 +16,16 @@ class Scraper
       temp_hash[:url] = school["href"]
       schools_array << temp_hash
     end 
-    binding.pry
+    schools_array
     end 
   
   #method for scraping details about an individual school
-  def self.scrape_school_details(all_schools_hash)
-    school_profile_url = all_schools_hash[:url]   
-   
+  def self.scrape_school_details(school_hash)
+    school_profile_url = school_hash[:url]   
+    school_profile_hash = {}   
     html = open("http://profiles.dcps.dc.gov#{school_profile_url}")
     document = Nokogiri::HTML(html)
-    school_profile_hash[:name] = all_schools_hash[:name]
+    school_profile_hash[:name] = school_hash[:name]
     school_profile_hash[:url] = school_profile_url
     school_profile_hash[:principal_name] = 
     school_profile_hash[:princpal_email]
@@ -36,4 +36,4 @@ class Scraper
   
 end 
 
-Scraper.scrape_school_details(Scraper.scrape_all_schools("http://profiles.dcps.dc.gov"))
+Scraper.scrape_school_details({:name=>"Aiton Elementary School", :url=>"/Aiton+Elementary+School"})
