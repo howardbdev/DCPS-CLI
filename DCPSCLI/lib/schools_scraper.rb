@@ -40,7 +40,19 @@ class Scraper
     school_profile_hash[:principal_email] = document.css("#school_info").css("a")[2]["href"].split(":")[1]
     school_profile_hash[:address] = document.css("p").first.text
     school_profile_hash[:grades] = school_details_document.css("#grade_id").css("p")[0].text
-    binding.pry
+    school_profile_hash
   end 
   
-end
+  def self.all_schools_with_details(school_page_url)
+    array_of_all_schools = []
+    schools_array = scrape_all_schools(school_page_url)
+    schools_array.each do |school|
+      array_of_all_schools << scrape_school_details(school)
+    end 
+    binding.pry
+  end   
+  
+end 
+  
+  
+Scraper.all_schools_with_details("http://profiles.dcps.dc.gov/")

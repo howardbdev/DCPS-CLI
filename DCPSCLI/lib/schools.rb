@@ -12,17 +12,8 @@ class School
       @@all << self 
     end 
   
-    def self.create_from_scraped_array(schools_array)
-      schools_array.each do |school|
-        School.new(school)
-      end 
-      binding.pry
-    end 
-    
     def turn_grade_range_into_grades
     end 
   
   
 end 
-
-School.create_from_scraped_array(Scraper.scrape_school_details(Scraper.scrape_all_schools("http://profiles.dcps.dc.gov/")))
