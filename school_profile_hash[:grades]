@@ -1,0 +1,26 @@
+
+[1mFrom:[0m /home/lhwall/cli-data-gem-assessment-v-000/DCPSCLI/lib/schools_scraper.rb @ line 43 Scraper.scrape_school_details:
+
+    [1;34m23[0m: [32mdef[0m [1;36mself[0m.[1;34mscrape_school_details[0m(school_hash)
+    [1;34m24[0m:   school_profile_url = school_hash[[33m:url[0m]   
+    [1;34m25[0m:   school_profile_hash = {}   
+    [1;34m26[0m:   html = open([31m[1;31m"[0m[31mhttp://profiles.dcps.dc.gov#{school_profile_url}[0m[31m[1;31m"[0m[31m[0m)
+    [1;34m27[0m:   document = [1;34;4mNokogiri[0m::HTML(html)
+    [1;34m28[0m: 
+    [1;34m29[0m:   document.search([31m[1;31m"[0m[31mbr[1;31m"[0m[31m[0m).each [32mdo[0m |n|
+    [1;34m30[0m:    n.replace([31m[1;31m"[0m[31m, [1;31m"[0m[31m[0m)
+    [1;34m31[0m:    [32mend[0m
+    [1;34m32[0m:    
+    [1;34m33[0m:    school_details_url = school_profile_url.split([31m[1;31m"[0m[31m/[1;31m"[0m[31m[0m)[[1;34m0[0m]
+    [1;34m34[0m:    school_details_html = open([31m[1;31m"[0m[31mhttp://profiles.dcps.dc.gov/DetailOverview_.aspx?school=#{school_details_url}[0m[31m[1;31m"[0m[31m[0m)
+    [1;34m35[0m:    school_details_document = [1;34;4mNokogiri[0m::HTML(school_details_html)
+    [1;34m36[0m:   
+    [1;34m37[0m:   school_profile_hash[[33m:name[0m] = school_hash[[33m:name[0m]
+    [1;34m38[0m:   school_profile_hash[[33m:url[0m] = school_profile_url
+    [1;34m39[0m:   school_profile_hash[[33m:principal_name[0m] = document.css([31m[1;31m"[0m[31m.infacis[1;31m"[0m[31m[0m).text
+    [1;34m40[0m:   school_profile_hash[[33m:principal_email[0m] = document.css([31m[1;31m"[0m[31m#school_info[1;31m"[0m[31m[0m).css([31m[1;31m"[0m[31ma[1;31m"[0m[31m[0m)[[1;34m2[0m][[31m[1;31m"[0m[31mhref[1;31m"[0m[31m[0m].split([31m[1;31m"[0m[31m:[1;31m"[0m[31m[0m)[[1;34m1[0m]
+    [1;34m41[0m:   school_profile_hash[[33m:address[0m] = document.css([31m[1;31m"[0m[31mp[1;31m"[0m[31m[0m).first.text
+    [1;34m42[0m:   school_profile_hash[[33m:grades[0m] = school_details_document.css([31m[1;31m"[0m[31m#grade_id[1;31m"[0m[31m[0m).css([31m[1;31m"[0m[31mp[1;31m"[0m[31m[0m)[[1;34m0[0m]
+ => [1;34m43[0m:   binding.pry
+    [1;34m44[0m: [32mend[0m 
+
