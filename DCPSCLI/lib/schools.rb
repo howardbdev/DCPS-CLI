@@ -18,11 +18,7 @@ class School
       @@all
     end 
   
-    def self.create_from_scraper(schools_array)  
-      schools_array.each do |school|
-        School.new(school)
-      end
-    end 
+
     
     def self.match_principals
       @@all.each do |school|
