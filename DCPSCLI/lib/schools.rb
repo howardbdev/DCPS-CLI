@@ -101,7 +101,34 @@ class School
     end 
     end 
     
-    def self.find_school_by_grade
+    def self.find_school_by_grade(entry)
+      entry = entry.downcase
+      if entry == "pk3"
+        grade_entry = -2
+      elsif entry == "pk4"
+        grade_entry = -1
+      elsif entry == "k" || entry == "kindergarten"
+       grade_entry = 0 
+      elsif entry == "adult"
+        grade_entry == 13
+      else
+        grade_entry = entry.to_i
+      end 
+      
+      school_names = []
+      @@all.each do |school|
+        if school.grade_range.include? grade_entry
+        school_names << school 
+       end 
+     end 
+    
+    if school_names == [] 
+      puts "Sorry, that is not a valid grade level."
+    else 
+      school_names.each do |school|
+        puts "School: #{school.name}, Grades: #{school.grades}"
+     end 
+    end 
     end 
     
     def view_school_details
@@ -112,4 +139,4 @@ end
 School.create_from_scraper(Scraper.school_test)
 Principal.create_from_scraper(Scraper.principal_test)
 School.match_principals
-School.find_school_by_principal("Malaika")
+School.find_school_by_grade("4")
