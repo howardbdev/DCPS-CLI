@@ -132,6 +132,11 @@ class School
     end 
     
     def view_school_details
+      puts "Name: #{@name}"
+      puts "Principal: #{@principal.full_name}"
+      puts "Grades: #{@grades}"
+      puts "Address: #{@address}"
+      puts "School Profile: http://profiles.dcps.dc.gov#{@url}"
     end 
   
 end 
@@ -139,4 +144,4 @@ end
 School.create_from_scraper(Scraper.school_test)
 Principal.create_from_scraper(Scraper.principal_test)
 School.match_principals
-School.find_school_by_grade("4")
+School.all[0].view_school_details

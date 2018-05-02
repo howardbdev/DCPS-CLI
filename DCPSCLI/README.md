@@ -1,1 +1,0 @@
-This is a CLI gem used to retrieve information from the website for the DC Public School system.  If you have any questions or comments, I am available through github as lhwall.  Thank you for your interest in this program.
