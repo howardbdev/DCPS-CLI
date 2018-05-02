@@ -82,15 +82,19 @@ class Scraper
   
   #test method so I don't scrape the whole site every time I'm writing a method for another class
    def self.school_test
-     test_value = []
+     test_value = []     
+     test_value << scrape_school_details({:name=>"Ballou High School", :url=>"/Aiton+Elementary+School"})
      test_value << scrape_school_details({:name=>"Aiton Elementary School", :url=>"/Aiton+Elementary+School"})
+     test_value << scrape_school_details({:name=>"Barnard Elementary School", :url=>"/Barnard+Elementary+School"})
      test_value
    end 
    
      #test method so I don't scrape the whole site every time I'm writing a method for another class
    def self.principal_test
      test_value = []
-     test_value << scrape_principal_details({:name=>"Aiton Elementary School", :url=>"/Aiton+Elementary+School"})
+     test_value << scrape_principal_details({:name=>"Aiton Elementary School", :url=>"/Ballou+High+School"})
+     test_value << scrape_principal_details({:name=>"Ballou High School", :url=>"/Aiton+Elementary+School"})
+     test_value << scrape_principal_details({:name=>"Barnard Elementary School", :url=>"/Barnard+Elementary+School"})
      test_value
    end 
   

@@ -61,6 +61,10 @@ class School
     end 
   
     def self.view_schools_alphabetically
+      alphabetical_schools = @@all.sort_by {|school| school.name}
+      alphabetical_schools.each do |school|
+        puts school.name
+      end 
     end 
     
     def self.find_school_by_name
@@ -80,4 +84,5 @@ end
 School.create_from_scraper(Scraper.school_test)
 Principal.create_from_scraper(Scraper.principal_test)
 School.match_principals
+School.view_schools_alphabetically
 

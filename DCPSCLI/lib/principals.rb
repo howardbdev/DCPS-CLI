@@ -20,6 +20,7 @@ class Principal
   end
   
   def self.sort_by_first_name
+    
   end 
   
   def self.find_principal_by_school
@@ -31,4 +32,4 @@ class Principal
   def view_principal_details
   end 
   
-end 
+end
