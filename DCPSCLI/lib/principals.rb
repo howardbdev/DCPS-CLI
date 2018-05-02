@@ -1,3 +1,5 @@
+require "pry"
+
 class Principal
   attr_accessor :first_name, :last_name, :school, :email_address, :full_name, :url
   @@all = []
@@ -19,8 +21,11 @@ class Principal
     @@all
   end
   
-  def self.sort_by_first_name
-    
+  def self.sort_by_last_name
+    alphabetical_principals = @@all.sort_by {|principal| principal.last_name}
+      alphabetical_principals.each do |principal|
+        puts "#{principal.full_name}, #{principal.school.name}"
+       end
   end 
   
   def self.find_principal_by_school
