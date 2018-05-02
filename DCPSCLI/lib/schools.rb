@@ -67,8 +67,22 @@ class School
       end 
     end 
     
-    def self.find_school_by_name
+    def self.find_school_by_name(entry)
+      school_names = []
+      @@all.each do |school|
+        if school.name.downcase.include? entry.downcase
+        school_names << school 
+       end 
+     end 
+    
+    if school_names == [] 
+      puts "Sorry, there are no schools by that name."
+    else 
+      school_names.each do |school|
+        puts school.name 
+     end 
     end 
+  end 
     
     def self.find_school_by_principal
     end 
@@ -84,5 +98,4 @@ end
 School.create_from_scraper(Scraper.school_test)
 Principal.create_from_scraper(Scraper.principal_test)
 School.match_principals
-School.view_schools_alphabetically
-
+School.find_school_by_name("z")
