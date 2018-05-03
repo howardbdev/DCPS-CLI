@@ -24,10 +24,27 @@ class Principal
       end 
     end
   
-  def self.find_principal_by_school
+  def self.find_principal_by_school(entry)
+      names = []
+      @@all.each do |principal|
+    if principal.school.name.include? entry.downcase
+        names << principal
+    end 
+    end 
+    
+    if names == [] 
+      puts "Sorry, there are no schools by that name."
+    else 
+      names.each do |principal|
+        puts "Principal: #{principal.full_name}, School: #{principal.school.name}"
+     end 
+    end 
   end
   
   def self.view_all_principals_with_email_addresses
+    @@all.each do |principal|
+      puts "#{principal.full_name}: #{principal.email_address}"
+    end 
   end
   
   def view_principal_details
