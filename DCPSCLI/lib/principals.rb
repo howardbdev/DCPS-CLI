@@ -5,7 +5,7 @@ class Principal
   extend SearchAndSortMethods::ClassMethods
   include SearchAndSortMethods::InstanceMethods
   
-  attr_accessor :first_name, :last_name, :school, :email_address, :full_name, :url, :name
+  attr_accessor :first_name, :last_name, :school, :email_address, :full_name, :url
   @@all = []
   
     def self.all
@@ -18,7 +18,7 @@ class Principal
   end 
   
   def self.view_principals_alphabetically
-       alphabetical = self.all.sort_by {|item| item.last_name}
+      alphabetical = self.all.sort_by {|item| item.last_name}
       alphabetical.each do |item|
         puts item.full_name
       end 
@@ -48,6 +48,10 @@ class Principal
   end
   
   def view_principal_details
+      puts "Name: #{@name}"
+      puts "School: #{@school.name}"
+      puts "Email Address: #{@email}"
+      puts "School Profile: http://profiles.dcps.dc.gov#{@url}"
   end 
   
 end

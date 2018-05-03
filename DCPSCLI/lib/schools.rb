@@ -126,4 +126,4 @@ end
 School.create_from_scraper(Scraper.school_test)
 Principal.create_from_scraper(Scraper.principal_test)
 School.match_principals
-Principal.view_principals_alphabetically
+Principal.all[0].view_principal_details
