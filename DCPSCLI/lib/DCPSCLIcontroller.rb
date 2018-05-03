@@ -1,4 +1,11 @@
-require 'pry'
+require_relative '../config/environment'
+
+# require_relative "scraper"
+# require_relative "principals"
+# require_relative "concerns/searchandsortmethods"
+# require_relative "schools"
+require "pry"
+
 
 class DCPSCLIcontroller
  
@@ -19,25 +26,42 @@ class DCPSCLIcontroller
     puts "To quit, type \'exit\'\."
     puts   "What would you like to do?"
     choice = gets.strip
+    puts "\n"
  while choice != "exit"
    if choice == "list schools"
       School.view_schools_alphabetically
+      continue
     elsif choice == "list principals"
       Principal.view_principals_alphabetically
+      continue
     elsif choice == "school search"
+    puts "Please enter a search value"
       entry = gets.strip
       School.find_by_name(entry)
+      continue
     elsif choice == "grade search"
+    puts "Please enter a search value"
       entry = gets.strip
       School.find_school_by_grade(entry)
+      continue
     elsif choice == "principal search"
+    puts "Please enter a search value"
       entry = gets.strip
-      School.find_by_name(entry)
-    elsif choice == "grade search"
+      Principal.find_by_name(entry)
+      continue
     end 
    choice = gets.strip
    end 
  end 
   
+  def continue
+    puts "\n"
+    puts "to continue, enter \'continue\'"
+    gets.strip
+    puts "\n"
+    call
+  end 
   
 end 
+
+DCPSCLIcontroller.new.call

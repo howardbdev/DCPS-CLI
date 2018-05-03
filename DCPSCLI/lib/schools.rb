@@ -54,7 +54,7 @@ class School
     end 
   
     #This method puts the full list of schools alphabetically
-    def view_schools_alphabetically
+    def self.view_schools_alphabetically
       alphabetical = self.all.sort_by {|item| item.name}
       alphabetical.each do |item|
         puts item.name

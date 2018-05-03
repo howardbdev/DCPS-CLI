@@ -26,6 +26,8 @@ module SearchAndSortMethods
       end 
     end 
     
+  end 
+    
  module InstanceMethods
      
      #This initialize method accepts a hash and creates a version of the object with an attribute for each key in the hash
@@ -34,7 +36,8 @@ module SearchAndSortMethods
         self.instance_variable_set("@#{key}".to_sym, value)
         end 
        self.class.all << self
-       end 
      end
+     
+   end 
 
 end 
