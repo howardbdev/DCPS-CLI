@@ -15,6 +15,8 @@ class DCPSCLIcontroller
     Principal.create_from_scraper(Scraper.principal_test)
     School.match_principals
     @most_recent_array = []
+    @most_recent_selection = ""
+    
   end 
   
    def call
@@ -29,6 +31,7 @@ class DCPSCLIcontroller
     puts "\n"
     puts   "What would you like to do?"
     choice = gets.strip
+    
     puts "\n"
  while choice != "exit"
    if choice == "list schools"
@@ -57,6 +60,7 @@ class DCPSCLIcontroller
    def upon_selection(choice)
        choice
        @most_recent_array = choice
+       @most_recent_selection = "#{choice}"
        more_information
     end 
        
@@ -69,7 +73,7 @@ class DCPSCLIcontroller
         call
       elsif entry.match(/\d+/)
         details(entry.to_i)
-        puts "To return to the main menu, please enter \'menu\'.  To return to the search results, please enter \'back\'."
+
       else
         puts "I'm sorry, that is not a valid entry."
         more_information 
@@ -78,6 +82,20 @@ class DCPSCLIcontroller
    
    def details(entry)
      @most_recent_array[entry - 1].view_details
+     next_choice
+    end
+    
+    def next_choice
+    puts "To return to the main menu, please enter \'menu\'.  To return to the search results, please enter \'back\'."
+     reply = gets.strip
+    if reply == "menu"
+        call 
+      elsif reply == "back"
+      #figure out back method
+      else 
+        puts "I''m sorry, that is not a valid selection."
+        next_choice
+      end 
    end 
   
 end 
