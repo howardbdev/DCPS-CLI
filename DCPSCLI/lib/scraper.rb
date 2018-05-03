@@ -4,7 +4,7 @@ require 'pry'
 
 class Scraper
   
-  #method for scraping the names of all the schools from the DCPS page
+  #Method for scraping the names of all the schools from the DCPS page
   def self.scrape_all_schools(school_page_url)
     html = open(school_page_url)
     document = Nokogiri::HTML(html)
@@ -19,7 +19,7 @@ class Scraper
     schools_array
    end 
   
-  #method for scraping details about an individual school
+  #Method for scraping details about an individual school from its DCPS profile page based on the hash of all schools
   def self.scrape_school_details(school_hash)
     school_profile_url = school_hash[:url]   
     school_profile_hash = {}  
@@ -43,7 +43,7 @@ class Scraper
     school_profile_hash
   end 
   
-  #method for scraping details about an individual principal
+  #Method for scraping details about an individual principal from its DCPS profile page based on the hash of all schools
   def self.scrape_principal_details(school_hash)
     school_profile_url = school_hash[:url]   
     principal_profile_hash = {}  
@@ -59,7 +59,7 @@ class Scraper
     principal_profile_hash
   end 
   
-  #method to capture all schools with their details in one array
+  #Method to capture all schools with their details in one array
   def self.all_schools_with_details(school_page_url)
     array_of_all_schools = []
     schools_array = scrape_all_schools(school_page_url)
@@ -69,7 +69,7 @@ class Scraper
     array_of_all_schools
   end
   
-  #method to capture all principals with their details in one array
+  #Method to capture all principals with their details in one array
   def self.all_principals_with_details(school_page_url)
     array_of_all_principals = []
     principals_array = scrape_all_schools(school_page_url)

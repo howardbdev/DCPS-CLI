@@ -26,8 +26,6 @@ module SearchAndSortMethods
       end 
     end 
     
- end 
-  
  module InstanceMethods
      
      #This initialize method accepts a hash and creates a version of the object with an attribute for each key in the hash

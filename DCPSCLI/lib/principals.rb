@@ -32,6 +32,7 @@ class Principal
       puts "Name: #{@name}"
       puts "School: #{@school.name}"
       puts "Email Address: #{@email}"
+      puts "Address: #{@school.address}"
       puts "School Profile: http://profiles.dcps.dc.gov#{@url}"
   end 
   
