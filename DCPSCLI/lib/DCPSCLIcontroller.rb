@@ -8,15 +8,16 @@ require "pry"
 
 
 class DCPSCLIcontroller
- 
+  
   #This method initializes the controller by scraping all of the DCPS school and principal profiles, creating objects for each of them, and matching schools to principals 
   def initialize(path = "http://profiles.dcps.dc.gov/")
     School.create_from_scraper(Scraper.school_test)
     Principal.create_from_scraper(Scraper.principal_test)
     School.match_principals
+    @most_recent_array = []
   end 
   
-  def call
+   def call
     puts "Welcome to the DCPS CLI!  What information would you like?"
     puts "To view a list of all schools in alphabetically order, enter \'list schools\'\."
     puts "To list all of all principals in alphabetical order, enter \'list principals\'\."
@@ -31,8 +32,7 @@ class DCPSCLIcontroller
     puts "\n"
  while choice != "exit"
    if choice == "list schools"
-      School.view_schools_alphabetically
-      more_information
+      upon_selection(School.view_schools_alphabetically)
     elsif choice == "list principals"
       Principal.view_principals_alphabetically
       more_information
@@ -58,10 +58,17 @@ class DCPSCLIcontroller
    choice = gets.strip
    end 
  end 
+ 
+   def upon_selection(choice)
+       choice
+       @most_recent_array = choice
+       more_information
+    end 
+       
   
   def more_information
      puts "\n"
-     puts "For more information on a #{self.class.name.downcase}, please enter an item number or enter \'return\' to return to the menu"
+     puts "For more information on a #{@most_recent_array[0].class.name.downcase}, please enter an item number or enter \'return\' to return to the menu"
      entry = gets.strip
       if entry.downcase == "return"
         call
@@ -75,7 +82,6 @@ class DCPSCLIcontroller
    
    def details(entry)
      
-     self.class.view_details
    end 
   
 end 

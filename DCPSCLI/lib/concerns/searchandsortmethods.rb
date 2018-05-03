@@ -24,10 +24,10 @@ module SearchAndSortMethods
           puts "#{alphabetical.index(item) + 1}. #{item.name }"
        end 
       end 
-    end 
+    end
     
   end 
-    
+  
  module InstanceMethods
      
      #This initialize method accepts a hash and creates a version of the object with an attribute for each key in the hash

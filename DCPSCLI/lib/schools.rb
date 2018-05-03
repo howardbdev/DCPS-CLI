@@ -58,7 +58,8 @@ class School
       alphabetical = self.all.sort_by {|item| item.name}
       alphabetical.each do |item|
         puts "#{alphabetical.index(item) + 1}. #{item.name}"
-      end 
+      end
+      alphabetical
     end
     
    
@@ -90,7 +91,8 @@ class School
       school_names.each do |school|
         puts "#{alphabetical.index(school) + 1}. School: #{school.name}, Grades: #{school.grades}"
      end 
-    end 
+     school_names
+    end
     end 
     
     #This method puts details about an individual school
