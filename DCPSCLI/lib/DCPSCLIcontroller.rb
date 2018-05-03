@@ -34,26 +34,21 @@ class DCPSCLIcontroller
    if choice == "list schools"
       upon_selection(School.view_schools_alphabetically)
     elsif choice == "list principals"
-      Principal.view_principals_alphabetically
-      more_information
+      upon_selection(Principal.view_principals_alphabetically)
     elsif choice == "list emails"
-      Principal.view_all_principals_with_email_addresses
-      more_information
+      upon_selection(Principal.view_all_principals_with_email_addresses)
     elsif choice == "school search"
     puts "Please enter a search value"
       entry = gets.strip
-      School.find_by_name(entry)
-      more_information
+      upon_selection(School.find_by_name(entry))
     elsif choice == "grade search"
     puts "Please enter a search value"
       entry = gets.strip
-      School.find_school_by_grade(entry)
-      more_information
+      upon_selection(School.find_school_by_grade(entry))
     elsif choice == "principal search"
     puts "Please enter a search value"
       entry = gets.strip
-      Principal.find_by_name(entry)
-      more_information
+      upon_selection(Principal.find_by_name(entry))
     end 
    choice = gets.strip
    end 
@@ -74,6 +69,7 @@ class DCPSCLIcontroller
         call
       elsif entry.match(/\d+/)
         details(entry.to_i)
+        puts "To return to the main menu, please enter \'menu\'.  To return to the search results, please enter \'back\'."
       else
         puts "I'm sorry, that is not a valid entry."
         more_information 
@@ -81,7 +77,7 @@ class DCPSCLIcontroller
    end 
    
    def details(entry)
-     
+     @most_recent_array[entry - 1].view_details
    end 
   
 end 

@@ -98,7 +98,7 @@ class School
     #This method puts details about an individual school
     def view_details
       puts "Name: #{@name}"
-      puts "Principal: #{@principal.full_name}"
+      puts "Principal: #{@principal.name}"
       puts "Grades: #{@grades}"
       puts "Address: #{@address}"
       puts "School Profile: http://profiles.dcps.dc.gov#{@url}"
