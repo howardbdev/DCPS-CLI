@@ -16,14 +16,14 @@ class Principal
   def self.view_principals_alphabetically
       alphabetical = self.all.sort_by {|item| item.last_name}
       alphabetical.each do |item|
-        puts item.name
+        puts "#{alphabetical.index(item) + 1}. #{item.name}"
       end 
     end
   
   #This method puts all principal names with email addresses
   def self.view_all_principals_with_email_addresses
     @@all.each do |principal|
-      puts "#{principal.name}: #{principal.email_address}"
+      puts "#{alphabetical.index(principal) + 1}. #{principal.name}: #{principal.email_address}"
     end 
   end
   

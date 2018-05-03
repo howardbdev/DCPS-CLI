@@ -57,7 +57,7 @@ class School
     def self.view_schools_alphabetically
       alphabetical = self.all.sort_by {|item| item.name}
       alphabetical.each do |item|
-        puts item.name
+        puts "#{alphabetical.index(item) + 1}. item.name"
       end 
     end
     
@@ -88,7 +88,7 @@ class School
       puts "Sorry, that is not a valid grade level."
     else 
       school_names.each do |school|
-        puts "School: #{school.name}, Grades: #{school.grades}"
+        puts "#{alphabetical.index(school) + 1}. School: #{school.name}, Grades: #{school.grades}"
      end 
     end 
     end 
