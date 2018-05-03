@@ -1,8 +1,3 @@
-require_relative "scraper"
-require_relative "principals"
-require_relative "concerns/searchandsortmethods"
-require "pry"
-
 class School
   extend SearchAndSortMethods::ClassMethods
   include SearchAndSortMethods::InstanceMethods
@@ -14,13 +9,13 @@ class School
       @@all
     end
 
-    
+    #This initialize method for schools has extra steps to convert the scraped grades into an array and match principals with schools
     def initialize(hash)
       super
       self.turn_grade_range_into_grades
     end 
-      
     
+    #This method runs through the array of schools and matches them to their principal based on the URL
     def self.match_principals
       @@all.each do |school|
         Principal.all.each do |principal|
@@ -32,6 +27,7 @@ class School
       end 
     end 
    
+    #This method takes the scraped value of a school's grades and converts it to a range in an array so schools can be searched by grade
     def turn_grade_range_into_grades
       lowest_grade_string = @grades.split("-")[0]
       highest_grade_string = @grades.split("-")[1]
@@ -57,7 +53,7 @@ class School
       @grade_range = Array(lowest_grade..highest_grade)
     end 
   
-    
+    #This method puts the full list of schools alphabetically
     def view_schools_alphabetically
       alphabetical = self.all.sort_by {|item| item.name}
       alphabetical.each do |item|
@@ -65,24 +61,8 @@ class School
       end 
     end
     
-    
-    def self.find_school_by_principal(entry)
-      school_names = []
-      @@all.each do |school|
-        if school.principal.full_name.downcase.include? entry.downcase
-        school_names << school 
-       end 
-     end 
-    
-    if school_names == [] 
-      puts "Sorry, there are no principals by that name."
-    else 
-      school_names.each do |school|
-        puts "School: #{school.name}, Principal: #{school.principal.full_name}"
-     end 
-    end 
-    end 
-    
+   
+    #This method allows you to search for a school by grade
     def self.find_school_by_grade(entry)
       entry = entry.downcase
       if entry == "pk3"
@@ -113,6 +93,7 @@ class School
     end 
     end 
     
+    #This method puts details about an individual school
     def view_school_details
       puts "Name: #{@name}"
       puts "Principal: #{@principal.full_name}"
@@ -122,8 +103,3 @@ class School
     end 
   
 end 
-
-School.create_from_scraper(Scraper.school_test)
-Principal.create_from_scraper(Scraper.principal_test)
-School.match_principals
-Principal.all[0].view_principal_details
