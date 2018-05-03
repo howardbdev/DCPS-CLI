@@ -28,7 +28,7 @@ class Principal
   end
   
   #This method allows you to view details for an individual principal
-  def view_principal_details
+  def view_details
       puts "Name: #{@name}"
       puts "School: #{@school.name}"
       puts "Email Address: #{@email}"

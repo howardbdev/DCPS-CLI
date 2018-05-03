@@ -94,7 +94,7 @@ class School
     end 
     
     #This method puts details about an individual school
-    def view_school_details
+    def view_details
       puts "Name: #{@name}"
       puts "Principal: #{@principal.full_name}"
       puts "Grades: #{@grades}"

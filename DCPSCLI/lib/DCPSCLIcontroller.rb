@@ -54,13 +54,17 @@ class DCPSCLIcontroller
    end 
  end 
   
-  def continue
-    puts "\n"
-    puts "to continue, enter \'continue\'"
-    gets.strip
-    puts "\n"
-    call
-  end 
+  def more_information
+     puts "\n"
+     puts "For more information on a #{self.class.downcase}, please enter an item number or enter \'return\' to return to the menu"
+     entry = gets.strip
+      if entry.downcase == "return"
+        class 
+      elsif entry.to_i.match(/\d+/)
+        #view details
+      else puts "I'm sorry, that is not a valid entry."
+        more_information 
+     end 
   
 end 
 
