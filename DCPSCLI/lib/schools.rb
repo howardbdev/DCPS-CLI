@@ -1,23 +1,26 @@
 require_relative "scraper"
 require_relative "principals"
+require_relative "concerns/searchandsortmethods"
 require "pry"
 
 class School
+  extend SearchAndSortMethods::ClassMethods
+  include SearchAndSortMethods::InstanceMethods
+  
   attr_accessor :name, :principal, :url, :address, :grades, :grade_range
   @@all = []
   
-    def initialize(school_hash)
-       school_hash.each do |key, value| 
-         self.instance_variable_set("@#{key}".to_sym, value)
-      end
-      self.turn_grade_range_into_grades
-      @@all << self 
-    end 
-    
-    def self.all 
+    def self.all
       @@all
+    end
+
+    
+    def initialize(hash)
+      super
+      self.turn_grade_range_into_grades
     end 
-  
+      
+    
     def self.match_principals
       @@all.each do |school|
         Principal.all.each do |principal|
@@ -55,7 +58,12 @@ class School
     end 
   
     
-    
+    def view_schools_alphabetically
+      alphabetical = self.all.sort_by {|item| item.name}
+      alphabetical.each do |item|
+        puts item.name
+      end 
+    end
     
     
     def self.find_school_by_principal(entry)
@@ -118,4 +126,4 @@ end
 School.create_from_scraper(Scraper.school_test)
 Principal.create_from_scraper(Scraper.principal_test)
 School.match_principals
-Principal.sort_by_last_name
+Principal.view_principals_alphabetically
