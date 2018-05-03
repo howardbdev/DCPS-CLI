@@ -57,7 +57,7 @@ class School
     def self.view_schools_alphabetically
       alphabetical = self.all.sort_by {|item| item.name}
       alphabetical.each do |item|
-        puts "#{alphabetical.index(item) + 1}. item.name"
+        puts "#{alphabetical.index(item) + 1}. #{item.name}"
       end 
     end
     

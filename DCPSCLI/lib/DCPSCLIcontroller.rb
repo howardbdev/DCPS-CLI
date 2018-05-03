@@ -20,35 +20,40 @@ class DCPSCLIcontroller
     puts "Welcome to the DCPS CLI!  What information would you like?"
     puts "To view a list of all schools in alphabetically order, enter \'list schools\'\."
     puts "To list all of all principals in alphabetical order, enter \'list principals\'\."
+    puts "To list all of all principals with their email addresses, enter \'list emails\'\."
     puts "To search for a school by name, enter \'school search\'\."
     puts "To search for a school by grade, enter \'grade search\'\."
     puts "To search for a principal by name, enter \'principal search\'\."
     puts "To quit, type \'exit\'\."
+    puts "\n"
     puts   "What would you like to do?"
     choice = gets.strip
     puts "\n"
  while choice != "exit"
    if choice == "list schools"
       School.view_schools_alphabetically
-      continue
+      more_information
     elsif choice == "list principals"
       Principal.view_principals_alphabetically
-      continue
+      more_information
+    elsif choice == "list emails"
+      Principal.view_all_principals_with_email_addresses
+      more_information
     elsif choice == "school search"
     puts "Please enter a search value"
       entry = gets.strip
       School.find_by_name(entry)
-      continue
+      more_information
     elsif choice == "grade search"
     puts "Please enter a search value"
       entry = gets.strip
       School.find_school_by_grade(entry)
-      continue
+      more_information
     elsif choice == "principal search"
     puts "Please enter a search value"
       entry = gets.strip
       Principal.find_by_name(entry)
-      continue
+      more_information
     end 
    choice = gets.strip
    end 
@@ -56,15 +61,22 @@ class DCPSCLIcontroller
   
   def more_information
      puts "\n"
-     puts "For more information on a #{self.class.downcase}, please enter an item number or enter \'return\' to return to the menu"
+     puts "For more information on a #{self.class.name.downcase}, please enter an item number or enter \'return\' to return to the menu"
      entry = gets.strip
       if entry.downcase == "return"
-        class 
-      elsif entry.to_i.match(/\d+/)
-        #view details
-      else puts "I'm sorry, that is not a valid entry."
+        call
+      elsif entry.match(/\d+/)
+        details(entry.to_i)
+      else
+        puts "I'm sorry, that is not a valid entry."
         more_information 
      end 
+   end 
+   
+   def details(entry)
+     
+     self.class.view_details
+   end 
   
 end 
 
