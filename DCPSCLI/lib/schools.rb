@@ -18,8 +18,6 @@ class School
       @@all
     end 
   
-
-    
     def self.match_principals
       @@all.each do |school|
         Principal.all.each do |principal|
@@ -56,29 +54,9 @@ class School
       @grade_range = Array(lowest_grade..highest_grade)
     end 
   
-    def self.view_schools_alphabetically
-      alphabetical_schools = @@all.sort_by {|school| school.name}
-      alphabetical_schools.each do |school|
-        puts school.name
-      end 
-    end 
     
-    def self.find_school_by_name(entry)
-      school_names = []
-      @@all.each do |school|
-        if school.name.downcase.include? entry.downcase
-        school_names << school 
-       end 
-     end 
     
-    if school_names == [] 
-      puts "Sorry, there are no schools by that name."
-    else 
-      school_names.each do |school|
-        puts school.name 
-     end 
-    end 
-  end 
+    
     
     def self.find_school_by_principal(entry)
       school_names = []

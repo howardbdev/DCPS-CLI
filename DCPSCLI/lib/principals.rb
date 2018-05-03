@@ -1,7 +1,7 @@
 require "pry"
 
 class Principal
-  attr_accessor :first_name, :last_name, :school, :email_address, :full_name, :url
+  attr_accessor :first_name, :last_name, :school, :email_address, :name, :url
   @@all = []
   
    def initialize(principal_hash)
