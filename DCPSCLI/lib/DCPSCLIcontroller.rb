@@ -1,12 +1,3 @@
-require_relative '../config/environment'
-
-# require_relative "scraper"
-# require_relative "principals"
-# require_relative "concerns/searchandsortmethods"
-# require_relative "schools"
-require "pry"
-
-
 class DCPSCLIcontroller
   
   #This method initializes the controller by scraping all of the DCPS school and principal profiles, creating objects for each of them, and matching schools to principals 
@@ -19,7 +10,7 @@ class DCPSCLIcontroller
   end 
   
   #This method displays the menu and allows the user to pick an option to execute
-   def call
+   def self.call
     puts "Welcome to the DCPS CLI!  What information would you like?"
     puts "To view a list of all schools in alphabetically order, enter \'list schools\'\."
     puts "To list all of all principals in alphabetical order, enter \'list principals\'\."
@@ -55,14 +46,14 @@ class DCPSCLIcontroller
    end 
  
    #This method runs when a selection has been made to execute the user's choice
-   def upon_selection(choice)
+   def self.upon_selection(choice)
        choice
        @most_recent_array = choice
        more_information
     end 
        
   #This method allows the user to get more information about a school or principal or return to the main menu
-  def more_information
+  def self.more_information
      puts "\n"
      puts "For more information, please enter an item number or enter \'menu\' to return to the menu"
      entry = gets.strip
@@ -78,13 +69,13 @@ class DCPSCLIcontroller
    end 
    
    #This method shows the user details about a school or principal
-   def details(entry)
+   def self.details(entry)
      @most_recent_array[entry - 1].view_details
      next_choice
     end
     
    #This method runs after a user has viewed details allowing them either to return to their search results or the main menu
-    def next_choice
+    def self.next_choice
     puts "To return to the main menu, please enter \'menu\'.  To return to the search results, please enter \'back\'."
      reply = gets.strip
     if reply == "menu"
@@ -101,6 +92,3 @@ class DCPSCLIcontroller
    end 
   
 end 
-
-current_session = DCPSCLIcontroller.new
-current_session.call

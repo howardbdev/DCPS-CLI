@@ -2,7 +2,7 @@ class School
   extend SearchAndSortMethods::ClassMethods
   include SearchAndSortMethods::InstanceMethods
   
-  attr_accessor :name, :principal, :url, :address, :grades, :grade_range
+  attr_accessor :name, :principal, :url, :address, :grades, :grade_range, :controller_session
   @@all = []
   
     def self.all

@@ -30,7 +30,7 @@ module SearchAndSortMethods
       puts "Please enter \'menu\' to return to the menu or enter another search term"
       new_entry = gets.strip.downcase
          if new_entry == "menu"
-           DCPSCLIcontroller.new.call
+           DCPSCLIcontroller.call
          else 
            self.return_name_search_results(find_by_name(new_entry))
          end 

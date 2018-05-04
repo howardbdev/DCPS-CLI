@@ -5,7 +5,7 @@ class Principal
   extend SearchAndSortMethods::ClassMethods
   include SearchAndSortMethods::InstanceMethods
   
-  attr_accessor :first_name, :last_name, :school, :email, :name, :url
+  attr_accessor :first_name, :last_name, :school, :email, :name, :url, :controller_session
   @@all = []
   
     def self.all
