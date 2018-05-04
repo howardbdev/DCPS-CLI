@@ -1,5 +1,4 @@
-require_relative "concerns/searchandsortmethods"
-require "pry"
+require_relative "../lib/concerns/searchandsortmethods"
 
 class Principal
   extend SearchAndSortMethods::ClassMethods

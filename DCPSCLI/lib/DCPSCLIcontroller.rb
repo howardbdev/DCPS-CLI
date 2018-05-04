@@ -6,7 +6,13 @@ class DCPSCLIcontroller
     Principal.create_from_scraper(Scraper.principal_test)
     School.match_principals
     @most_recent_array = []
-    
+  end 
+  
+  def self.initialize_with_all_schools(path = "http://profiles.dcps.dc.gov/")
+    School.create_from_scraper(Scraper.scrape_all_schools(path))
+    Principal.create_from_scraper(Scraper.scrape_all_schools(path))
+    School.match_principals
+    @most_recent_array = []
   end 
   
   #This method displays the menu and allows the user to pick an option to execute

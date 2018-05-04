@@ -2,5 +2,5 @@
 
 require_relative '../config/environment'
 
-DCPSCLIcontroller.new
+DCPSCLIcontroller.initialize_with_all_schools
 DCPSCLIcontroller.call

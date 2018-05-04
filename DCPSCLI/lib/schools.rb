@@ -1,3 +1,5 @@
+require_relative "../lib/concerns/searchandsortmethods"
+
 class School
   extend SearchAndSortMethods::ClassMethods
   include SearchAndSortMethods::InstanceMethods
@@ -29,6 +31,14 @@ class School
    
     #This method takes the scraped value of a school's grades and converts it to a range in an array so schools can be searched by grade
     def turn_grade_range_into_grades
+      if @grades == nil
+        lowest_grade = "none"
+        highest_grade = "none"
+      elsif @grades.downcase == "adult"
+          lowest_grade = 13
+          highest_grade = 13
+      
+      else 
       lowest_grade_string = @grades.split("-")[0]
       highest_grade_string = @grades.split("-")[1]
       
@@ -49,7 +59,7 @@ class School
       else 
         highest_grade = highest_grade_string.scan(/\d+/).join.to_i
       end 
-      
+    end 
       @grade_range = Array(lowest_grade..highest_grade)
     end 
   
