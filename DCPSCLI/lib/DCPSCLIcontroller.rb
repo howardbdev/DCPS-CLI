@@ -60,16 +60,15 @@ class DCPSCLIcontroller
    def upon_selection(choice)
        choice
        @most_recent_array = choice
-       @most_recent_selection = "#{choice}"
        more_information
     end 
        
   
   def more_information
      puts "\n"
-     puts "For more information on a #{@most_recent_array[0].class.name.downcase}, please enter an item number or enter \'return\' to return to the menu"
+     puts "For more information on a #{@most_recent_array[0].class.name.downcase}, please enter an item number or enter \'menu\' to return to the menu"
      entry = gets.strip
-      if entry.downcase == "return"
+      if entry.downcase == "menu"
         call
       elsif entry.match(/\d+/)
         details(entry.to_i)
@@ -91,9 +90,12 @@ class DCPSCLIcontroller
     if reply == "menu"
         call 
       elsif reply == "back"
-      #figure out back method
+      @most_recent_array.each do |item|
+          puts "#{@most_recent_array.index(item) + 1}. #{item.name}"
+        end 
+          more_information
       else 
-        puts "I''m sorry, that is not a valid selection."
+        puts "I\'m sorry, that is not a valid selection."
         next_choice
       end 
    end 

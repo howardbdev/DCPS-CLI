@@ -89,7 +89,7 @@ class School
       puts "Sorry, that is not a valid grade level."
     else 
       school_names.each do |school|
-        puts "#{alphabetical.index(school) + 1}. School: #{school.name}, Grades: #{school.grades}"
+        puts "#{school_names.index(school) + 1}. School: #{school.name}, Grades: #{school.grades}"
      end 
      school_names
     end

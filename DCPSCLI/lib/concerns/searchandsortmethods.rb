@@ -21,7 +21,7 @@ module SearchAndSortMethods
         puts "Sorry, nothing found by that name."
       else 
         names.each do |item|
-          puts "#{alphabetical.index(item) + 1}. #{item.name }"
+          puts "#{names.index(item) + 1}. #{item.name }"
        end 
       end 
     end
