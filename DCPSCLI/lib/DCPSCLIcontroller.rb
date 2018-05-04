@@ -15,7 +15,6 @@ class DCPSCLIcontroller
     Principal.create_from_scraper(Scraper.principal_test)
     School.match_principals
     @most_recent_array = []
-    @most_recent_selection = ""
     
   end 
   
@@ -43,13 +42,11 @@ class DCPSCLIcontroller
     elsif choice == "school search"
     puts "Please enter a search value"
       entry = gets.strip
-      upon_selection(School.find_by_name(entry))
+      upon_selection(School.find_by_name)
     elsif choice == "grade search"
       upon_selection(School.grade_level_search(School.find_school_by_grade_entry))
     elsif choice == "principal search"
-    puts "Please enter a search value"
-      entry = gets.strip
-      upon_selection(Principal.find_by_name(entry))
+      upon_selection(Principal.return_name_search_results(Principal.find_by_name(Principal.enter_search_value)))
     elsif choice == "exit"
       puts "Thank you for your time!"
       exit 
@@ -69,7 +66,7 @@ class DCPSCLIcontroller
   #This method allows the user to get more information about a school or principal or return to the main menu
   def more_information
      puts "\n"
-     puts "For more information on a #{@most_recent_array[0].class.name.downcase}, please enter an item number or enter \'menu\' to return to the menu"
+     puts "For more information, please enter an item number or enter \'menu\' to return to the menu"
      entry = gets.strip
       if entry.downcase == "menu"
         call
@@ -107,4 +104,5 @@ class DCPSCLIcontroller
   
 end 
 
-DCPSCLIcontroller.new.call
+current_session = DCPSCLIcontroller.new
+current_session.call
