@@ -40,9 +40,7 @@ class DCPSCLIcontroller
     elsif choice == "list emails"
       upon_selection(Principal.view_all_principals_with_email_addresses)
     elsif choice == "school search"
-    puts "Please enter a search value"
-      entry = gets.strip
-      upon_selection(School.find_by_name)
+      upon_selection(School.return_name_search_results(School.find_by_name(School.enter_search_value)))
     elsif choice == "grade search"
       upon_selection(School.grade_level_search(School.find_school_by_grade_entry))
     elsif choice == "principal search"
