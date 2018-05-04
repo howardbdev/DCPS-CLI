@@ -19,6 +19,7 @@ class DCPSCLIcontroller
     
   end 
   
+  #This method displays the menu and allows the user to pick an option to execute
    def call
     puts "Welcome to the DCPS CLI!  What information would you like?"
     puts "To view a list of all schools in alphabetically order, enter \'list schools\'\."
@@ -58,15 +59,16 @@ class DCPSCLIcontroller
       puts "I\'m sorry, that is not a valid selection."
       call
     end 
- end 
+   end 
  
+   #This method runs when a selection has been made to execute the user's choice
    def upon_selection(choice)
        choice
        @most_recent_array = choice
        more_information
     end 
        
-  
+  #This method allows the user to get more information about a school or principal or return to the main menu
   def more_information
      puts "\n"
      puts "For more information on a #{@most_recent_array[0].class.name.downcase}, please enter an item number or enter \'menu\' to return to the menu"
@@ -82,11 +84,13 @@ class DCPSCLIcontroller
      end 
    end 
    
+   #This method shows the user details about a school or principal
    def details(entry)
      @most_recent_array[entry - 1].view_details
      next_choice
     end
     
+   #This method runs after a user has viewed details allowing them either to return to their search results or the main menu
     def next_choice
     puts "To return to the main menu, please enter \'menu\'.  To return to the search results, please enter \'back\'."
      reply = gets.strip

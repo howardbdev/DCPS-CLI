@@ -72,7 +72,7 @@ class School
         grade_entry = -1
       elsif entry == "k" || entry == "kindergarten"
        grade_entry = 0 
-      elsif entry == "adult"
+      elsif entry == "adult" || entry == "a"
         grade_entry == 13
       else
         grade_entry = entry.to_i
