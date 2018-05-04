@@ -33,7 +33,6 @@ class DCPSCLIcontroller
     choice = gets.strip
     
     puts "\n"
- while choice != "exit"
    if choice == "list schools"
       upon_selection(School.view_schools_alphabetically)
     elsif choice == "list principals"
@@ -52,9 +51,13 @@ class DCPSCLIcontroller
     puts "Please enter a search value"
       entry = gets.strip
       upon_selection(Principal.find_by_name(entry))
+    elsif choice == "exit"
+      puts "Thank you for your time!"
+      exit 
+    else
+      puts "I\'m sorry, that is not a valid selection."
+      call
     end 
-   choice = gets.strip
-   end 
  end 
  
    def upon_selection(choice)
