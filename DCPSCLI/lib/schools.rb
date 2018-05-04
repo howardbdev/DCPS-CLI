@@ -63,9 +63,10 @@ class School
     end
     
    
-    #This method allows you to search for a school by grade
-    def self.find_school_by_grade(entry)
-      entry = entry.downcase
+    #This method allows you to enter a search term to find a school by grade
+    def self.find_school_by_grade_entry
+      puts "Please enter a search value"
+      entry = gets.strip.downcase
       if entry == "pk3"
         grade_entry = -2
       elsif entry == "pk4"
@@ -74,10 +75,21 @@ class School
        grade_entry = 0 
       elsif entry == "adult" || entry == "a"
         grade_entry == 13
-      else
-        grade_entry = entry.to_i
+      elsif entry.scan(/\d+/)
+        grade_entry = entry.scan(/\d+/)[0].to_i
+        if grade_entry > 12 || grade_entry < 1 
+          puts "That is not a valid entry."
+          self.find_school_by_grade_entry
+        end 
+       else
+         puts "That is not a valid entry."
+         self.find_school_by_grade_entry
       end 
-      
+      grade_entry
+    end 
+    
+    #This method searchs for a grade level and returns all schools whose grade ranges include that level
+    def self.grade_level_search(grade_entry)
       school_names = []
       @@all.each do |school|
         if school.grade_range.include? grade_entry
@@ -85,15 +97,11 @@ class School
        end 
      end 
     
-    if school_names == [] 
-      puts "Sorry, that is not a valid grade level."
-    else 
       school_names.each do |school|
         puts "#{school_names.index(school) + 1}. School: #{school.name}, Grades: #{school.grades}"
-     end 
+     end
      school_names
     end
-    end 
     
     #This method puts details about an individual school
     def view_details

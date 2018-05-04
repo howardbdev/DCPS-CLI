@@ -45,9 +45,7 @@ class DCPSCLIcontroller
       entry = gets.strip
       upon_selection(School.find_by_name(entry))
     elsif choice == "grade search"
-    puts "Please enter a search value"
-      entry = gets.strip
-      upon_selection(School.find_school_by_grade(entry))
+      upon_selection(School.grade_level_search(School.find_school_by_grade_entry))
     elsif choice == "principal search"
     puts "Please enter a search value"
       entry = gets.strip
