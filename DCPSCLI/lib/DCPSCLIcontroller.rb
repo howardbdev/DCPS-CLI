@@ -9,8 +9,8 @@ class DCPSCLIcontroller
   end 
   
   def self.initialize_with_all_schools(path = "http://profiles.dcps.dc.gov/")
-    School.create_from_scraper(Scraper.scrape_all_schools(path))
-    Principal.create_from_scraper(Scraper.scrape_all_schools(path))
+    School.create_from_scraper(Scraper.all_schools_with_details(path))
+    Principal.create_from_scraper(Scraper.all_principals_with_details(path))
     School.match_principals
     @most_recent_array = []
   end 

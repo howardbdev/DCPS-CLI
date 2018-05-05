@@ -21,6 +21,7 @@ class Scraper
   
   #Method for scraping details about an individual school from its DCPS profile page based on the hash of all schools
   def self.scrape_school_details(school_hash)
+    
     school_profile_url = school_hash[:url]   
     school_profile_hash = {}  
     html = open("http://profiles.dcps.dc.gov#{school_profile_url}")
