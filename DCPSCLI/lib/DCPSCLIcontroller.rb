@@ -65,10 +65,15 @@ class DCPSCLIcontroller
      entry = gets.strip
       if entry.downcase == "menu"
         call
-      elsif entry.match(/\d+/)
-        details(entry.to_i)
-
-      else
+      elsif entry.match(/^\d+$/)
+        
+        if entry.to_i <= @most_recent_array.length && entry.to_i > 0
+          details(entry.to_i)
+       else
+        puts "I'm sorry, that is not a valid entry."
+        more_information 
+      end 
+    else
         puts "I'm sorry, that is not a valid entry."
         more_information 
      end 

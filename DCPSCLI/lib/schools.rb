@@ -117,6 +117,7 @@ class School
     def view_details
       puts "Name: #{@name}"
       puts "Principal: #{@principal.name}"
+      puts "Principal Email: #{@principal.email}"
       puts "Grades: #{@grades}"
       puts "Address: #{@address}"
       puts "School Profile: http://profiles.dcps.dc.gov#{@url}"
