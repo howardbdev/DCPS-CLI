@@ -78,16 +78,17 @@ class School
       puts "Please enter a search value"
       entry = gets.strip.downcase
       if entry == "pk3"
-        grade_entry = -2
+        grade_entry = -3
       elsif entry == "pk4"
-        grade_entry = -1
+        grade_entry = -2
       elsif entry == "k" || entry == "kindergarten"
-       grade_entry = 0 
+       grade_entry = -1
       elsif entry == "adult" || entry == "a"
-        grade_entry == 13
+        grade_entry = 12
       elsif entry.scan(/\d+/)
         grade_entry = entry.scan(/\d+/)[0].to_i
-        if grade_entry > 12 || grade_entry < 1 
+        grade_entry -= 1
+        if grade_entry > 11 || grade_entry < 0
           puts "That is not a valid entry."
           self.find_school_by_grade_entry
         end 
