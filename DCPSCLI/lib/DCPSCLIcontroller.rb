@@ -61,7 +61,7 @@ class DCPSCLIcontroller
   #This method allows the user to get more information about a school or principal or return to the main menu
   def self.more_information
      puts "\n"
-     puts "For more information, please enter an item number or enter \'menu\' to return to the menu"
+     puts "For more information, please enter an item number or enter \'menu\' to return to the menu."
      entry = gets.strip
       if entry.downcase == "menu"
         call

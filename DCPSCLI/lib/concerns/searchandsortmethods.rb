@@ -10,7 +10,7 @@ module SearchAndSortMethods
     
     #This method allows you to enter a search value and returns an array of all the names from the class that include that search value
     def enter_search_value
-      puts "Please enter a search value"
+      puts "Please enter a search value."
       entry = gets.strip.downcase
       entry
     end 
@@ -27,7 +27,7 @@ module SearchAndSortMethods
        
 
     def search_not_found
-      puts "Please enter \'menu\' to return to the menu or enter another search term"
+      puts "Please enter \'menu\' to return to the menu or enter another search term."
       new_entry = gets.strip.downcase
          if new_entry == "menu"
            DCPSCLIcontroller.call
