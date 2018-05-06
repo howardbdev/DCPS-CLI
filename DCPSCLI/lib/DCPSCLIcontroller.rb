@@ -1,6 +1,6 @@
 class DCPSCLIcontroller
   
-  #This method initializes the controller by scraping all of the DCPS school and principal profiles, creating objects for each of them, and matching schools to principals 
+  #This method initializes the controller -- it is setup to use the test values because it takes a long time to start up with everything
   def initialize(path = "http://profiles.dcps.dc.gov/")
     School.create_from_scraper(Scraper.school_test)
     Principal.create_from_scraper(Scraper.principal_test)
@@ -8,6 +8,7 @@ class DCPSCLIcontroller
     @most_recent_array = []
   end 
   
+  #This method intializes the controller with all schools from the DCPS website
   def self.initialize_with_all_schools(path = "http://profiles.dcps.dc.gov/")
     School.create_from_scraper(Scraper.all_schools_with_details(path))
     Principal.create_from_scraper(Scraper.all_principals_with_details(path))

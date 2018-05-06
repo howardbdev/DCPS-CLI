@@ -15,6 +15,8 @@ module SearchAndSortMethods
       entry
     end 
       
+      
+    #This method takes in an argument and returns all the items from the all array that match that value  
     def find_by_name(entry)
       names = []
       self.all.each do |item|
@@ -25,7 +27,7 @@ module SearchAndSortMethods
        names
      end 
        
-
+    #This method allows you to return to the menu or search for a different value
     def search_not_found
       puts "Please enter \'menu\' to return to the menu or enter another search term."
       new_entry = gets.strip.downcase
@@ -36,7 +38,7 @@ module SearchAndSortMethods
          end 
       end 
 
-       
+    #This method returns the principals or schools from the search or tells you if nothing was found   
     def return_name_search_results(names)
       if names == []
          puts "Sorry, nothing found by that name."
